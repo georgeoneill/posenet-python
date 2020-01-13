@@ -1,6 +1,10 @@
 # posenet-python
 Lightweight CPU or GPU pose estimation using TensorflowLite
 
+<p align="center">
+<img src='example.jpg'>
+</p>
+
 ## Installation
 
 The code has been tested to work on a python 3.7 distribution, the minimal installation of [miniconda](https://docs.conda.io/en/latest/miniconda.html) should be sufficient.

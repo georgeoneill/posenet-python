@@ -44,5 +44,5 @@ Edit the line in webcam_code.py to accomodate where your model is saved, and tha
 To run the webcam test code, run the following
 
 ```
-python webcam_test_py
+python webcam_test.py
 ```

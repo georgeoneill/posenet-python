@@ -39,7 +39,7 @@ poser = posenet.Poser();
 poser.setup(model_path='C:/path/to/posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite');
 ```
 
-Edit the line in webcam_code.py to accomodate where your model is saved, and that should be it.
+Edit the line in webcam_test.py to accomodate where your model is saved, and that should be it.
 
 To run the webcam test code, run the following
 

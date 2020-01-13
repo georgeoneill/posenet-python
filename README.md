@@ -9,7 +9,7 @@ Lightweight CPU or GPU pose estimation using TensorflowLite
 
 The code has been tested to work on a python 3.7 distribution, the minimal installation of [miniconda](https://docs.conda.io/en/latest/miniconda.html) should be sufficient.
 
-Once installed open a command window and create a python 2.7 environent, for example called _posenet_.
+Once installed open a command window and create a python 3.7 environent, for example called _posenet_.
 ```
 conda create --name posenet python=3.7
 ```

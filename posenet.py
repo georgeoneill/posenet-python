@@ -19,7 +19,7 @@ class Poser:
                              'width' : ins[0]['shape'][2]
                              }
         
-    def estimatePose(self,image):
+    def estimatePose(self,image,mirror=False):
         
         M = self.constructAffine(image.shape[0],
                                  image.shape[1],
@@ -49,10 +49,22 @@ class Poser:
                                     image.shape[0],
                                     image.shape[1])
         
+        
         resultsWarped = self.warpKeyPoints(results,Minv)
+        
+        # flip the image and keyPoints if you have it in mirror mode
+        if mirror==True:
+            # contruct affine doesnt work here as we are not assuming
+            # the origin is the center, so explicit definition here
+            Mirror = np.float32([[-1, 0, image.shape[1]-1], [0, 1, 0]])
+            resultsWarped = self.warpKeyPoints(resultsWarped,Mirror)           
+            image = cv2.warpAffine(image, Mirror, (image.shape[1],
+                                                 image.shape[0]))
+        
         resultsAppended = self.appendAnatomyLabels(resultsWarped)
         
         self.keyPoints = resultsAppended;
+        self.image = image;
         
     def getKeyPoints(self): 
         
@@ -97,14 +109,15 @@ class Poser:
         return results
         
     
-    def constructAffine(self,src_h,src_w,trg_h,trg_w):
+    def constructAffine(self,src_h,src_w,trg_h,trg_w,origin='center'):
         
         # Construct affine matrix for warping image to fit into TensorFlow
+        # Assumes the origin of the image is in the center.
         
         # Scale factors
         sx = trg_w / src_w
         sy = trg_h / src_h
-
+        
         mat_w = [sx, 0, trg_w/2.0 - sx*src_w/2.0]
         mat_h = [0, sy, trg_h/2.0 - sy*src_h/2.0]
         M = np.c_[ mat_w, mat_h].T 

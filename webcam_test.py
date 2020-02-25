@@ -20,9 +20,9 @@ while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
     
-
-    poser.estimatePose(image=frame)
-
+    poser.estimatePose(image=frame,mirror=True)
+    
+    frame = poser.image;
     xCoords = poser.keyPoints['xCoords']
     yCoords = poser.keyPoints['yCoords']
     confidence = poser.keyPoints['confidence']

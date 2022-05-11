@@ -2,7 +2,7 @@
 Lightweight CPU or GPU pose estimation using TensorflowLite
 
 <p align="center">
-<img src='example.jpg'>
+<img src='example.jpg' alt="Yes, that is me using a stick to hit print screen, a selifie stick if you will...">
 </p>
 
 ## Installation
